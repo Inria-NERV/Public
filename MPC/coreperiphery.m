@@ -4,11 +4,12 @@ function isCore = coreperiphery(A, L, N, f, c)
 %
 %   Inputs:
 %
-%       A  A_DESCRIPTION.
-%       L  L_DESCRIPTION.
-%       N  N_DESCRIPTION.
-%       C  C_DESCRIPTION.
-%       F  F_DESCRIPTION.
+ %  A  Supra-adjacency matrix.
+%       L  Number of layers.
+%       N  Number of nodes per layer.
+%       F  Single-layer richness function. If not defined, strength is
+%           used.
+%       C  `c` coefficients vector such as defined in [1].
 %
 %   Output:
 %
@@ -49,36 +50,6 @@ end
 isCore = zeros(N,1);
 isCore(rankingInd(1:rankOfMaxMuPlus)) = 1;
 isCore = logical(isCore);
-
-%% Plotting
-
-% figure(99); clf; hold on;
-% 
-% RED = [0.7882    0.3529    0.1490];
-% BLUE = [0.3686    0.5490    0.6588];
-% 
-% hBar = bar(1:rankOfMaxMuPlus, [muPlus(rankingInd(1:rankOfMaxMuPlus)), muMinus(rankingInd(1:rankOfMaxMuPlus))] ./ max(muPlus), 'stacked');
-% hBar(1).EdgeColor = 'none';
-% hBar(1).BarWidth = 1;
-% hBar(1).FaceColor = RED;
-% hBar(2).FaceColor = RED;
-% hBar(2).EdgeColor = 'none';
-% hBar(1).FaceAlpha = .7;
-% hBar(2).FaceAlpha = .3;
-% 
-% hBar = bar(rankOfMaxMuPlus+1:N, [muPlus(rankingInd(rankOfMaxMuPlus+1:N)), muMinus(rankingInd(rankOfMaxMuPlus+1:N))] ./ max(muPlus), 'stacked');
-% hBar(1).EdgeColor = 'none';
-% hBar(1).BarWidth = 1;
-% hBar(1).FaceColor = BLUE;
-% hBar(2).FaceColor = BLUE;
-% hBar(2).EdgeColor = 'none';
-% hBar(1).FaceAlpha = .7;
-% hBar(2).FaceAlpha = .3;
-% 
-% plot(1:rankOfMaxMuPlus, muPlus(rankingInd(1:rankOfMaxMuPlus)) ./ max(muPlus), 'Color', RED);
-% plot(rankOfMaxMuPlus:N, muPlus(rankingInd(rankOfMaxMuPlus:end)) ./ max(muPlus), 'Color', BLUE);
-% 
-% drawnow;
 
 end
 
